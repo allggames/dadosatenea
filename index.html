@@ -1,16 +1,15 @@
 <!DOCTYPE html>
-<html lang="es"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Dados del Tesoro - Playa | Atenea</title>
-  
-  <script src="./Dados del Tesoro - Playa _ Arkana Games_files/three.min.js.descarga"></script>
-  
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Dados del Tesoro | Casino Atenea</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Poppins:wght@400;600;700&display=swap');
 
     :root{
-      /* NUEVOS TONOS NARANJAS DE ATENEA */
+      /* TONOS NARANJAS DE ATENEA */
       --sky1:#ffb76b; --sky2:#ff9440;
       --sea1:#f57c00; --sea2:#e65100;
       --sand1:#ffe082; --sand2:#ffca28;
@@ -56,7 +55,7 @@
       border-radius:12px;
       display:flex; align-items:center; justify-content:center;
       font-size:24px; font-weight:900;
-      color:#e65100; /* Naranja en lugar de azul */
+      color:#e65100;
       background: linear-gradient(145deg, #fff 0%, #ffecb3 100%);
       box-shadow: 0 12px 25px rgba(0,0,0,.25), inset 0 2px 0 rgba(255,255,255,.8);
       animation: diceRoll 1s ease-in-out infinite;
@@ -108,25 +107,6 @@
       display:block;
       margin:0 auto 8px;
       filter: drop-shadow(0 10px 25px rgba(0,0,0,.35));
-    }
-
-    .promo-banner{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      padding:9px 22px;
-      border-radius:999px;
-      background: linear-gradient(145deg, rgba(0,0,0,.20), rgba(255,255,255,.10));
-      border:1px solid rgba(255,255,255,.25);
-      box-shadow: 0 10px 25px rgba(0,0,0,.18);
-      margin-bottom:12px;
-      backdrop-filter: blur(6px);
-    }
-    .promo-banner span{
-      color:#fff;
-      font-weight:700;
-      font-size:.85rem;
-      text-shadow:0 1px 0 rgba(0,0,0,.25);
     }
 
     .game-title{
@@ -358,7 +338,7 @@
       box-shadow: inset 0 0 24px rgba(255,255,255,.06);
     }
     
-    /* BOTON DE RECLAMO MODIFICADO */
+    /* BOTON DE RECLAMO MODIFICADO AL ESTILO ATENEA */
     .modal-close{
       border:2px solid #fff;
       padding:12px 20px;
@@ -402,60 +382,60 @@
   </style>
 </head>
 <body>
-  <div class="loading-screen hidden" id="loadingScreen">
-    <img src="./Dados del Tesoro - Playa _ Arkana Games_files/logooo.png" alt="Atenea" class="loading-logo">
+  <div class="loading-screen" id="loadingScreen">
+    <img src="assets/spirita.png" alt="Casino Atenea" class="loading-logo" />
     <div class="loading-dice">
       <div class="loading-die">🎲</div>
       <div class="loading-die">🎲</div>
     </div>
-    <div class="loading-text">DADOS DEL TESORO - PLAYA</div>
+    <div class="loading-text">DADOS DEL TESORO</div>
     <div class="loading-bar-container"><div class="loading-bar"></div></div>
   </div>
 
   <div class="game-container">
     <header class="header">
-      <img src="./Dados del Tesoro - Playa _ Arkana Games_files/logooo.png" alt="Atenea" class="logo">
-      <h1 class="game-title">🏝️ DADOS DEL TESORO 🏝️</h1>
-      <p class="game-subtitle">Lanzá los dados sobre la arena del casino playero y descubrí tu premio.</p>
+      <img src="assets/spirita.png" alt="Casino Atenea" class="logo" />
+      <h1 class="game-title">🎲 DADOS DEL TESORO 🎲</h1>
+      <p class="game-subtitle">Lanzá los dados en Casino Atenea y descubrí tu premio.</p>
     </header>
 
     <div class="canvas-container">
       <div class="rope"></div>
-      <div class="score-display" id="scoreDisplay" style="display: block;"><span id="scoreValue">6</span></div>
-      <canvas id="game-canvas" width="640" height="480" style="width: 640px; height: 480px;"></canvas>
+      <div class="score-display" id="scoreDisplay"><span id="scoreValue">0</span></div>
+      <canvas id="game-canvas"></canvas>
     </div>
 
-    <button class="roll-button" id="rollButton" onclick="rollDice()" disabled="">🎲 LANZAR DADOS 🎲</button>
+    <button class="roll-button" id="rollButton" onclick="rollDice()">🎲 LANZAR DADOS 🎲</button>
 
-    <div class="timer-container visible" id="timerContainer">
+    <div class="timer-container" id="timerContainer">
       <div class="timer-label">⏳ Próxima oportunidad en:</div>
-      <div class="timer-value" id="timerValue">23:56:58</div>
+      <div class="timer-value" id="timerValue">00:00:00</div>
     </div>
 
     <div class="prize-table">
       <h3>🏆 TABLA DE PREMIOS 🏆</h3>
       <div class="prize-row"><span class="prize-score">11-12 puntos</span><span class="prize-name">🏴‍☠️ <b>BONO A ELECCIÓN</b></span></div>
       <div class="prize-row"><span class="prize-score">9-10 puntos</span><span class="prize-name">💎 <b>BONO DEL 200%</b></span></div>
-      <div class="prize-row"><span class="prize-score">7-8 puntos</span><span class="prize-name">🌊 <b>BONO DEL 150%</b></span></div>
-      <div class="prize-row"><span class="prize-score">4-6 puntos</span><span class="prize-name">🍹 <b>BONO DEL 100%</b></span></div>
-      <div class="prize-row"><span class="prize-score">2-3 puntos</span><span class="prize-name">🐚 <b>BONO SORPRESA</b></span></div>
+      <div class="prize-row"><span class="prize-score">7-8 puntos</span><span class="prize-name">🔥 <b>BONO DEL 150%</b></span></div>
+      <div class="prize-row"><span class="prize-score">4-6 puntos</span><span class="prize-name">🎰 <b>BONO DEL 100%</b></span></div>
+      <div class="prize-row"><span class="prize-score">2-3 puntos</span><span class="prize-name">🎁 <b>BONO SORPRESA</b></span></div>
     </div>
 
     <div class="instructions">
-      <p>🏖️ Presioná “Lanzar Dados” para tirarlos sobre la arena</p>
+      <p>🎲 Presioná “Lanzar Dados” para probar tu suerte</p>
       <p>🎯 La suma visible arriba define tu premio</p>
-      <p>💎 Mientras más alto el puntaje, más VIP el tesoro</p>
+      <p>💎 Mientras más alto el puntaje, mejor el bono</p>
     </div>
   </div>
 
-  <div class="modal-overlay visible" id="resultModal">
+  <div class="modal-overlay" id="resultModal">
     <div class="modal-content">
       <div class="modal-dice-result">
-        <div class="modal-die" id="modalDie1">⚃</div>
-        <div class="modal-die" id="modalDie2">⚁</div>
+        <div class="modal-die" id="modalDie1">⚀</div>
+        <div class="modal-die" id="modalDie2">⚀</div>
       </div>
-      <div class="modal-total">TOTAL: <span id="modalTotal">6</span></div>
-      <div class="modal-prize" id="modalPrize">🍹 <span style="color:#ffd700;">¡BONO DEL 100%!</span><br><span style="font-size:.95rem; opacity:.9;">Happy hour playero</span></div>
+      <div class="modal-total">TOTAL: <span id="modalTotal">2</span></div>
+      <div class="modal-prize" id="modalPrize">¡PREMIO!</div>
       <button class="modal-close" onclick="claimPrize()">RECLAMAR PREMIO 📸<br><small style="font-size:0.7em;font-weight:normal;">Capturá y tocá acá</small></button>
     </div>
   </div>
@@ -476,7 +456,7 @@
     function clamp(v,a,b){ return Math.max(a, Math.min(b, v)); }
 
     // =========================
-    // Anti-superposición (visual)
+    // Anti-superposición (visual): evita que los dados se "mezclen"
     // =========================
     const DICE_MIN_SEP = 1.55;   
     const DICE_MIN_X_GAP = 1.35; 
@@ -520,9 +500,9 @@
     }
 
     // =========================
-    // LocalStorage propio de ESTA página (premio persistente)
+    // LocalStorage propio de ESTA página
     // =========================
-    const LS_PREFIX = 'atenea_dados_tesoro_playa_v1';
+    const LS_PREFIX = 'atenea_dados_tesoro_v1';
     const LS_LAST_PLAY = `${LS_PREFIX}_lastPlay`;     
     const LS_LAST_PRIZE = `${LS_PREFIX}_lastPrize`;   
 
@@ -635,7 +615,7 @@
 
     function createBeachTable(){
       const sandMat = new THREE.MeshStandardMaterial({ color: 0xf2c77b, roughness:0.95 });
-      // AGUA MÁS CÁLIDA (Atardecer)
+      // AGUA MÁS CÁLIDA (Atardecer Atenea)
       const waterMat = new THREE.MeshStandardMaterial({ color: 0xf57c00, roughness:0.35, transparent:true, opacity:0.92 });
       const foamMat  = new THREE.MeshStandardMaterial({ color: 0xffecb3, roughness:0.6, transparent:true, opacity:0.65 });
 
@@ -919,7 +899,6 @@
       const prize = calculatePrize(total);
       document.getElementById('modalPrize').innerHTML = prize.html;
 
-      // guarda premio para que al recargar vuelva a mostrarse
       try{
         localStorage.setItem(LS_LAST_PRIZE, JSON.stringify({
           d1, d2, total,
@@ -930,7 +909,6 @@
 
       document.getElementById('resultModal').classList.add('visible');
 
-      // sonido popup (aparece modal)
       sfx(AUDIO.popup, 0.60);
 
       if(total >= 7){ createConfetti(); }
@@ -947,9 +925,9 @@
     function calculatePrize(total){
       if (total >= 11) return { html: '🏴‍☠️ <span style="color:#ffd700;">¡TESORO A ELECCIÓN!</span><br><span style="font-size:.95rem; opacity:.9;">Elegí tu bono VIP</span>' };
       if (total >= 9)  return { html: '💎 <span style="color:#ffd700;">¡BONO DEL 200%!</span><br><span style="font-size:.95rem; opacity:.9;">Nivel diamante</span>' };
-      if (total >= 7)  return { html: '🌊 <span style="color:#ffd700;">¡BONO DEL 150%!</span><br><span style="font-size:.95rem; opacity:.9;">Marea alta</span>' };
-      if (total >= 4)  return { html: '🍹 <span style="color:#ffd700;">¡BONO DEL 100%!</span><br><span style="font-size:.95rem; opacity:.9;">Happy hour playero</span>' };
-      return { html: '🐚 <span style="color:#ffd700;">¡BONO SORPRESA!</span><br><span style="font-size:.95rem; opacity:.9;">Una perlita para vos</span>' };
+      if (total >= 7)  return { html: '🔥 <span style="color:#ffd700;">¡BONO DEL 150%!</span><br><span style="font-size:.95rem; opacity:.9;">Ganancia épica</span>' };
+      if (total >= 4)  return { html: '🎰 <span style="color:#ffd700;">¡BONO DEL 100%!</span><br><span style="font-size:.95rem; opacity:.9;">Multiplicá tu suerte</span>' };
+      return { html: '🎁 <span style="color:#ffd700;">¡BONO SORPRESA!</span><br><span style="font-size:.95rem; opacity:.9;">Un regalo para vos</span>' };
     }
 
     // NUEVA FUNCION: Redirección al webchat de Atenea
@@ -1025,7 +1003,6 @@
 
       if(!saved) return;
 
-      // pinta el modal con el premio guardado
       document.getElementById('scoreDisplay').style.display = 'block';
       document.getElementById('scoreValue').textContent = saved.total ?? 0;
 
@@ -1056,12 +1033,10 @@
         window.addEventListener('pointerdown', unlockOnce, { once:false });
         window.addEventListener('keydown', unlockOnce, { once:false });
 
-        // muestra el premio persistido (si existe) al recargar
-        // (lo hacemos luego de initScene para que todo esté listo)
         setTimeout(()=>{ showSavedPrizeIfAny(); }, 180);
 
       }, 2200);
     };
   </script>
-
-</body></html>
+</body>
+</html>

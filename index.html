@@ -9,11 +9,13 @@
     @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Poppins:wght@400;600;700&display=swap');
 
     :root{
-      /* TONOS NARANJAS DE ATENEA */
-      --sky1:#ffb76b; --sky2:#ff9440;
-      --sea1:#f57c00; --sea2:#e65100;
-      --sand1:#ffe082; --sand2:#ffca28;
-      --teal:#e65100; --gold:#ffd700;
+      /* TONOS PREMIUM: BORDÓ, NEGRO, NARANJA OSCURO Y DORADO */
+      --bordo-light: #800000;
+      --bordo: #4a0000;
+      --black-light: #1a1a1a;
+      --black: #000000;
+      --dark-orange: #d35400;
+      --gold: #ffd700;
     }
 
     *{ margin:0; padding:0; box-sizing:border-box; }
@@ -23,16 +25,16 @@
       overflow-x:hidden;
       color:#fff;
       background:
-        radial-gradient(circle at 80% 10%, rgba(255,216,107,.45), transparent 35%),
-        radial-gradient(circle at 15% 20%, rgba(255,140,0,.20), transparent 45%),
-        linear-gradient(180deg, var(--sky1) 0%, var(--sky2) 35%, var(--sea1) 60%, var(--sea2) 100%);
+        radial-gradient(circle at 80% 10%, rgba(211,84,0,.35), transparent 35%),
+        radial-gradient(circle at 15% 20%, rgba(255,215,0,.15), transparent 45%),
+        linear-gradient(180deg, var(--bordo-light) 0%, var(--bordo) 35%, var(--black-light) 60%, var(--black) 100%);
     }
 
     .loading-screen{
       position:fixed; inset:0;
       background:
-        radial-gradient(circle at 70% 25%, rgba(255,216,107,.55), transparent 45%),
-        linear-gradient(180deg, var(--sky1) 0%, var(--sky2) 45%, var(--sea1) 100%);
+        radial-gradient(circle at 70% 25%, rgba(211,84,0,.45), transparent 45%),
+        linear-gradient(180deg, var(--bordo) 0%, var(--black) 100%);
       display:flex; flex-direction:column;
       justify-content:center; align-items:center;
       z-index:1000;
@@ -43,7 +45,7 @@
       width:170px; height:auto;
       margin-bottom:22px;
       animation:logoPulse 2s ease-in-out infinite;
-      filter: drop-shadow(0 10px 30px rgba(0,0,0,.35));
+      filter: drop-shadow(0 10px 30px rgba(0,0,0,.55));
     }
     @keyframes logoPulse{
       0%,100%{ transform:scale(1); }
@@ -55,9 +57,10 @@
       border-radius:12px;
       display:flex; align-items:center; justify-content:center;
       font-size:24px; font-weight:900;
-      color:#e65100;
-      background: linear-gradient(145deg, #fff 0%, #ffecb3 100%);
-      box-shadow: 0 12px 25px rgba(0,0,0,.25), inset 0 2px 0 rgba(255,255,255,.8);
+      color: var(--gold);
+      background: linear-gradient(145deg, var(--dark-orange) 0%, var(--bordo) 100%);
+      box-shadow: 0 12px 25px rgba(0,0,0,.45), inset 0 2px 0 rgba(255,215,0,.4);
+      border: 1px solid var(--gold);
       animation: diceRoll 1s ease-in-out infinite;
     }
     .loading-die:nth-child(2){ animation-delay:.2s; }
@@ -70,20 +73,20 @@
       font-family:'Cinzel',serif;
       font-size:1.35rem;
       letter-spacing:1px;
-      color:#fff;
-      text-shadow:0 0 18px rgba(255,216,107,.55);
+      color: var(--gold);
+      text-shadow:0 0 18px rgba(255,215,0,.55);
       margin-bottom:16px;
     }
     .loading-bar-container{
       width:260px; height:8px;
       border-radius:999px;
-      background: rgba(255,255,255,.18);
+      background: rgba(255,255,255,.10);
       overflow:hidden;
-      box-shadow: inset 0 1px 0 rgba(255,255,255,.25);
+      box-shadow: inset 0 1px 0 rgba(0,0,0,.5);
     }
     .loading-bar{
       height:100%;
-      background: linear-gradient(90deg, var(--gold), #ffb74a, var(--teal), var(--gold));
+      background: linear-gradient(90deg, var(--dark-orange), var(--gold), var(--dark-orange));
       border-radius:999px;
       animation: loadingProgress 2s ease-in-out forwards;
     }
@@ -106,26 +109,26 @@
       height:auto;
       display:block;
       margin:0 auto 8px;
-      filter: drop-shadow(0 10px 25px rgba(0,0,0,.35));
+      filter: drop-shadow(0 10px 25px rgba(0,0,0,.55));
     }
 
     .game-title{
       font-family:'Cinzel',serif;
       font-weight:900;
       font-size: clamp(1.7rem, 6vw, 2.8rem);
-      background: linear-gradient(180deg, #fff 0%, #fff4d1 30%, var(--gold) 60%, #ffb74a 100%);
+      background: linear-gradient(180deg, #fff 0%, #ffecb3 30%, var(--gold) 60%, var(--dark-orange) 100%);
       -webkit-background-clip:text;
       -webkit-text-fill-color:transparent;
-      filter: drop-shadow(0 6px 14px rgba(0,0,0,.25));
+      filter: drop-shadow(0 6px 14px rgba(0,0,0,.45));
       margin-bottom:6px;
     }
     .game-subtitle{
-      color: rgba(255,255,255,.92);
+      color: rgba(255,255,255,.85);
       font-size:.95rem;
       max-width:420px;
       margin:0 auto;
       line-height:1.4;
-      text-shadow:0 2px 10px rgba(0,0,0,.22);
+      text-shadow:0 2px 10px rgba(0,0,0,.4);
     }
 
     .canvas-container{
@@ -137,12 +140,12 @@
       position:relative;
       margin-bottom:18px;
       box-shadow:
-        0 0 0 3px rgba(255,255,255,.25),
-        0 0 0 7px rgba(255,140,0,.65),
-        0 24px 70px rgba(0,0,0,.45);
+        0 0 0 3px rgba(255,215,0,.25),
+        0 0 0 7px var(--bordo),
+        0 24px 70px rgba(0,0,0,.65);
       background:
-        radial-gradient(circle at 80% 10%, rgba(255,216,107,.35), transparent 35%),
-        linear-gradient(180deg, rgba(255,255,255,.10), rgba(0,0,0,.05));
+        radial-gradient(circle at 80% 10%, rgba(211,84,0,.25), transparent 35%),
+        linear-gradient(180deg, rgba(0,0,0,.10), rgba(0,0,0,.45));
     }
 
     .rope{
@@ -150,17 +153,18 @@
       top:10px; left:12px; right:12px;
       height:14px;
       border-radius:999px;
-      background: linear-gradient(90deg, #f4d29e, #caa26a, #f4d29e);
-      opacity:.85;
-      filter: drop-shadow(0 6px 10px rgba(0,0,0,.25));
+      background: linear-gradient(90deg, #5c0000, #b30000, #5c0000);
+      opacity:.95;
+      filter: drop-shadow(0 6px 10px rgba(0,0,0,.45));
       z-index:9;
+      border: 1px solid #1a0000;
     }
     .rope::after{
       content:"";
       position:absolute;
       left:10px; right:10px; top:5px;
       height:3px; border-radius:999px;
-      background: rgba(255,255,255,.25);
+      background: rgba(255,255,255,.15);
     }
 
     #game-canvas{ width:100%; height:100%; display:block; }
@@ -172,9 +176,9 @@
       transform:translateX(-50%);
       padding:10px 28px;
       border-radius:999px;
-      background: linear-gradient(145deg, rgba(0,0,0,.40), rgba(255,255,255,.08));
-      border: 1px solid rgba(255,255,255,.22);
-      box-shadow: 0 10px 25px rgba(0,0,0,.25), inset 0 0 22px rgba(255,216,107,.15);
+      background: linear-gradient(145deg, rgba(0,0,0,.60), rgba(74,0,0,.30));
+      border: 1px solid rgba(255,215,0,.3);
+      box-shadow: 0 10px 25px rgba(0,0,0,.45), inset 0 0 22px rgba(211,84,0,.25);
       backdrop-filter: blur(6px);
       z-index:10;
       display:none;
@@ -183,8 +187,8 @@
       font-family:'Cinzel',serif;
       font-size:1.7rem;
       font-weight:900;
-      color:#fff;
-      text-shadow:0 0 18px rgba(255,216,107,.55);
+      color: var(--gold);
+      text-shadow:0 0 18px rgba(255,215,0,.45);
     }
 
     .roll-button{
@@ -194,13 +198,13 @@
       cursor:pointer;
       font-family:'Cinzel',serif;
       font-size:1.25rem;
-      font-weight:800;
-      color:#05202a;
-      background: linear-gradient(145deg, #fff 0%, #fff1cc 30%, var(--gold) 70%, #ffb74a 100%);
+      font-weight:900;
+      color:#1a0000;
+      background: linear-gradient(145deg, #fff4d1 0%, var(--gold) 40%, var(--dark-orange) 100%);
       box-shadow:
-        0 7px 0 rgba(151,111,22,.9),
-        0 16px 40px rgba(0,0,0,.28),
-        inset 0 2px 0 rgba(255,255,255,.75);
+        0 7px 0 rgba(74,0,0,.9),
+        0 16px 40px rgba(0,0,0,.4),
+        inset 0 2px 0 rgba(255,255,255,.5);
       transition: transform .18s ease, box-shadow .18s ease;
       position:relative;
       overflow:hidden;
@@ -209,9 +213,9 @@
     .roll-button:hover:not(:disabled){ transform: translateY(-3px); }
     .roll-button:active:not(:disabled){ transform: translateY(3px); }
     .roll-button:disabled{
-      background: linear-gradient(145deg, rgba(255,255,255,.20), rgba(0,0,0,.18));
-      color: rgba(255,255,255,.55);
-      box-shadow: 0 5px 0 rgba(0,0,0,.25);
+      background: linear-gradient(145deg, rgba(255,255,255,.10), rgba(0,0,0,.3));
+      color: rgba(255,255,255,.35);
+      box-shadow: 0 5px 0 rgba(0,0,0,.4);
       cursor:not-allowed;
     }
 
@@ -219,21 +223,21 @@
       display:none;
       padding:14px 26px;
       border-radius:16px;
-      background: linear-gradient(145deg, rgba(0,0,0,.35), rgba(255,255,255,.08));
-      border: 1px solid rgba(255,255,255,.20);
-      box-shadow: 0 14px 30px rgba(0,0,0,.22);
+      background: linear-gradient(145deg, rgba(0,0,0,.55), rgba(74,0,0,.2));
+      border: 1px solid rgba(255,215,0,.2);
+      box-shadow: 0 14px 30px rgba(0,0,0,.35);
       backdrop-filter: blur(6px);
       text-align:center;
       margin-bottom:16px;
     }
     .timer-container.visible{ display:block; }
-    .timer-label{ color: rgba(255,255,255,.9); font-size:.9rem; margin-bottom:6px; }
+    .timer-label{ color: rgba(255,255,255,.7); font-size:.9rem; margin-bottom:6px; }
     .timer-value{
       font-family:'Cinzel',serif;
       font-size:2rem;
       font-weight:900;
-      color:#fff;
-      text-shadow:0 0 18px rgba(255,140,0,.35);
+      color: var(--gold);
+      text-shadow:0 0 18px rgba(211,84,0,.5);
     }
 
     .prize-table{
@@ -241,17 +245,17 @@
       width:100%;
       border-radius:16px;
       padding:14px 18px;
-      background: linear-gradient(145deg, rgba(255,255,255,.12), rgba(0,0,0,.22));
-      border: 1px solid rgba(255,255,255,.20);
-      box-shadow: 0 18px 42px rgba(0,0,0,.22);
+      background: linear-gradient(145deg, rgba(0,0,0,.4), rgba(74,0,0,.3));
+      border: 1px solid rgba(255,215,0,.15);
+      box-shadow: 0 18px 42px rgba(0,0,0,.4);
       backdrop-filter: blur(6px);
       margin-bottom:16px;
     }
     .prize-table h3{
       font-family:'Cinzel',serif;
       font-size:1.05rem;
-      color:#fff;
-      text-shadow: 0 0 18px rgba(255,216,107,.35);
+      color: var(--gold);
+      text-shadow: 0 0 18px rgba(255,215,0,.25);
       margin-bottom:10px;
       text-align:center;
     }
@@ -260,10 +264,10 @@
       justify-content:space-between;
       align-items:center;
       padding:8px 0;
-      border-bottom:1px solid rgba(255,255,255,.12);
+      border-bottom:1px solid rgba(255,255,255,.08);
     }
     .prize-row:last-child{ border-bottom:none; }
-    .prize-score{ font-weight:700; color:rgba(255,255,255,.95); }
+    .prize-score{ font-weight:700; color:rgba(255,255,255,.8); }
     .prize-name{ font-weight:800; color: #fff; }
     .prize-name b{ color: var(--gold); }
 
@@ -272,17 +276,17 @@
       width:100%;
       border-radius:14px;
       padding:14px 18px;
-      background: linear-gradient(145deg, rgba(255,255,255,.10), rgba(0,0,0,.18));
-      border: 1px solid rgba(255,255,255,.18);
-      box-shadow: 0 18px 42px rgba(0,0,0,.18);
+      background: linear-gradient(145deg, rgba(0,0,0,.3), rgba(0,0,0,.5));
+      border: 1px solid rgba(255,255,255,.1);
+      box-shadow: 0 18px 42px rgba(0,0,0,.3);
       backdrop-filter: blur(6px);
       text-align:center;
     }
-    .instructions p{ font-size:.86rem; color: rgba(255,255,255,.92); margin:5px 0; }
+    .instructions p{ font-size:.86rem; color: rgba(255,255,255,.8); margin:5px 0; }
 
     .modal-overlay{
       position:fixed; inset:0;
-      background: rgba(0,0,0,.78);
+      background: rgba(0,0,0,.85);
       display:none;
       justify-content:center;
       align-items:center;
@@ -296,10 +300,10 @@
       border-radius:24px;
       padding:34px 26px;
       background:
-        radial-gradient(circle at 80% 10%, rgba(255,216,107,.22), transparent 45%),
-        linear-gradient(145deg, rgba(255,255,255,.12), rgba(0,0,0,.35));
-      border: 2px solid rgba(255,255,255,.22);
-      box-shadow: 0 30px 90px rgba(0,0,0,.55);
+        radial-gradient(circle at 80% 10%, rgba(211,84,0,.2), transparent 45%),
+        linear-gradient(145deg, var(--bordo), var(--black));
+      border: 2px solid var(--gold);
+      box-shadow: 0 30px 90px rgba(0,0,0,.8);
       text-align:center;
       animation: modalAppear .45s ease;
     }
@@ -313,16 +317,17 @@
       border-radius:14px;
       display:flex; align-items:center; justify-content:center;
       font-size:2rem; font-weight:900;
-      color:#e65100;
-      background: linear-gradient(145deg, #fff 0%, #ffecb3 100%);
-      box-shadow: 0 14px 30px rgba(0,0,0,.28), inset 0 2px 0 rgba(255,255,255,.8);
+      color: var(--gold);
+      background: linear-gradient(145deg, var(--dark-orange) 0%, var(--bordo) 100%);
+      box-shadow: 0 14px 30px rgba(0,0,0,.5), inset 0 2px 0 rgba(255,215,0,.4);
+      border: 1px solid var(--gold);
     }
     .modal-total{
       font-family:'Cinzel',serif;
       font-size:2.6rem;
       font-weight:900;
-      color:#fff;
-      text-shadow:0 0 22px rgba(255,216,107,.45);
+      color: var(--gold);
+      text-shadow:0 0 22px rgba(255,215,0,.35);
       margin-bottom:10px;
     }
     .modal-prize{
@@ -333,22 +338,22 @@
       padding:14px 14px;
       border-radius:14px;
       margin-bottom:18px;
-      background: linear-gradient(145deg, rgba(255,140,0,.18), rgba(255,216,107,.18));
-      border: 1px solid rgba(255,255,255,.20);
-      box-shadow: inset 0 0 24px rgba(255,255,255,.06);
+      background: linear-gradient(145deg, rgba(0,0,0,.4), rgba(74,0,0,.4));
+      border: 1px solid rgba(255,215,0,.3);
+      box-shadow: inset 0 0 24px rgba(0,0,0,.5);
     }
     
-    /* BOTON DE RECLAMO MODIFICADO AL ESTILO ATENEA */
+    /* BOTON DE RECLAMO ESTILO ATENEA DARK */
     .modal-close{
-      border:2px solid #fff;
+      border:2px solid var(--gold);
       padding:12px 20px;
       border-radius:12px;
       cursor:pointer;
       font-family:'Cinzel',serif;
       font-weight:900;
       color:#ffffff;
-      background: linear-gradient(180deg, #ff8c00, #e65100);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      background: linear-gradient(180deg, var(--dark-orange), var(--bordo));
+      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
       transition: transform .18s ease;
       line-height: 1.2;
       font-size: 1.1rem;
@@ -436,6 +441,9 @@
       </div>
       <div class="modal-total">TOTAL: <span id="modalTotal">2</span></div>
       <div class="modal-prize" id="modalPrize">¡PREMIO!</div>
+      
+      <div id="prize-date" style="display:none; font-size: 0.9rem; margin-bottom: 15px; color: rgba(255,255,255,0.7);"></div>
+      
       <button class="modal-close" onclick="claimPrize()">RECLAMAR PREMIO 📸<br><small style="font-size:0.7em;font-weight:normal;">Capturá y tocá acá</small></button>
     </div>
   </div>
@@ -456,7 +464,7 @@
     function clamp(v,a,b){ return Math.max(a, Math.min(b, v)); }
 
     // =========================
-    // Anti-superposición (visual): evita que los dados se "mezclen"
+    // Anti-superposición (visual)
     // =========================
     const DICE_MIN_SEP = 1.55;   
     const DICE_MIN_X_GAP = 1.35; 
@@ -569,9 +577,9 @@
       const container = canvas.parentElement;
 
       scene = new THREE.Scene();
-      // CIELO/FONDO NARANJA ATENEA
-      scene.background = new THREE.Color(0xffb76b);
-      scene.fog = new THREE.Fog(0xffb76b, 12, 28);
+      // CIELO VIP: Bordó súper oscuro casi negro
+      scene.background = new THREE.Color(0x2a0000);
+      scene.fog = new THREE.Fog(0x2a0000, 12, 28);
 
       const aspect = container.clientWidth / container.clientHeight;
       camera = new THREE.PerspectiveCamera(45, aspect, 0.1, 1000);
@@ -584,9 +592,9 @@
       renderer.shadowMap.enabled = true;
       renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 
-      scene.add(new THREE.AmbientLight(0xffffff, 0.55));
+      scene.add(new THREE.AmbientLight(0xffffff, 0.45));
 
-      const sun = new THREE.DirectionalLight(0xfff0c8, 1.15);
+      const sun = new THREE.DirectionalLight(0xffd700, 1.25); // Luz principal dorada
       sun.position.set(8, 12, 6);
       sun.castShadow = true;
       sun.shadow.mapSize.width = 2048;
@@ -599,12 +607,12 @@
       sun.shadow.camera.bottom = -12;
       scene.add(sun);
 
-      const rim = new THREE.DirectionalLight(0xffd86b, 0.35); // Luz de reflejo cálida
+      const rim = new THREE.DirectionalLight(0xd35400, 0.5); // Luz de borde naranja oscuro
       rim.position.set(-8, 6, -8);
       scene.add(rim);
 
-      createBeachTable();
-      createBeachDecor();
+      createCasinoTable();
+      createTableDecor();
 
       dice1 = createDice(-1.0, SAFE_BOUNDS.y, 0.2);
       dice2 = createDice( 1.0, SAFE_BOUNDS.y, 0.0);
@@ -613,18 +621,19 @@
       animate();
     }
 
-    function createBeachTable(){
-      const sandMat = new THREE.MeshStandardMaterial({ color: 0xf2c77b, roughness:0.95 });
-      // AGUA MÁS CÁLIDA (Atardecer Atenea)
-      const waterMat = new THREE.MeshStandardMaterial({ color: 0xf57c00, roughness:0.35, transparent:true, opacity:0.92 });
-      const foamMat  = new THREE.MeshStandardMaterial({ color: 0xffecb3, roughness:0.6, transparent:true, opacity:0.65 });
+    function createCasinoTable(){
+      // Fieltro de mesa Bordó
+      const tableMat = new THREE.MeshStandardMaterial({ color: 0x4a0000, roughness:0.95 });
+      // Bordes Negros
+      const borderMat = new THREE.MeshStandardMaterial({ color: 0x0a0a0a, roughness:0.55 });
+      // Detalles dorados
+      const goldAccentMat  = new THREE.MeshStandardMaterial({ color: 0xffd700, roughness:0.4, metalness: 0.8 });
 
-      const sand = new THREE.Mesh(new THREE.BoxGeometry(12, 0.6, 9), sandMat);
-      sand.position.y = -0.3;
-      sand.receiveShadow = true;
-      scene.add(sand);
+      const table = new THREE.Mesh(new THREE.BoxGeometry(12, 0.6, 9), tableMat);
+      table.position.y = -0.3;
+      table.receiveShadow = true;
+      scene.add(table);
 
-      const borderMat = new THREE.MeshStandardMaterial({ color: 0xb07538, roughness:0.55 });
       const borders = [
         { w: 12.5, h: 0.45, d: 0.35, x: 0,   y: 0.1, z: 4.65 },
         { w: 12.5, h: 0.45, d: 0.35, x: 0,   y: 0.1, z: -4.65 },
@@ -638,21 +647,23 @@
         scene.add(m);
       });
 
-      const water = new THREE.Mesh(new THREE.BoxGeometry(11.2, 0.18, 2.2), waterMat);
-      water.position.set(0, 0.08, -2.9);
-      scene.add(water);
+      // Franja negra de casino al fondo
+      const blackZone = new THREE.Mesh(new THREE.BoxGeometry(11.2, 0.18, 2.2), new THREE.MeshStandardMaterial({ color: 0x000000, roughness:0.8 }));
+      blackZone.position.set(0, 0.08, -2.9);
+      scene.add(blackZone);
 
+      // Líneas doradas de apuesta
       for(let i=0;i<3;i++){
-        const foam = new THREE.Mesh(new THREE.BoxGeometry(11.0, 0.08, 0.35), foamMat);
-        foam.position.set(0, 0.15 + i*0.05, -2.2 + i*0.25);
-        foam.rotation.y = (i%2? 0.02 : -0.02);
-        scene.add(foam);
+        const line = new THREE.Mesh(new THREE.BoxGeometry(11.0, 0.08, 0.15), goldAccentMat);
+        line.position.set(0, 0.15 + i*0.05, -2.2 + i*0.25);
+        scene.add(line);
       }
     }
 
-    function createBeachDecor(){
+    function createTableDecor(){
       const goldMat = new THREE.MeshStandardMaterial({ color: 0xffd700, roughness:0.25, metalness:0.85 });
 
+      // Fichas doradas (monedas) en las esquinas
       const coinGeo = new THREE.CylinderGeometry(0.28, 0.28, 0.07, 32);
       const positions = [{x:-4.2,z:-3.4},{x:4.0,z:-3.5},{x:-4.2,z:3.4},{x:4.1,z:3.3}];
       positions.forEach((p)=>{
@@ -665,35 +676,6 @@
           scene.add(coin);
         }
       });
-
-      const chest = makeChest(goldMat);
-      chest.position.set(0, 0.18, -3.7);
-      chest.scale.set(0.95,0.95,0.95);
-      scene.add(chest);
-    }
-
-    function makeChest(goldMat){
-      const g = new THREE.Group();
-      const wood  = new THREE.MeshStandardMaterial({ color: 0x7a4a22, roughness:0.7 });
-      const strap = new THREE.MeshStandardMaterial({ color: 0x3b2a1a, roughness:0.8 });
-
-      const base = new THREE.Mesh(new THREE.BoxGeometry(2.0, 0.8, 1.2), wood);
-      base.position.y = 0.4; base.castShadow = true; base.receiveShadow = true; g.add(base);
-
-      const lid = new THREE.Mesh(new THREE.CylinderGeometry(0.6, 0.6, 2.0, 24, 1, false, 0, Math.PI), wood);
-      lid.rotation.z = Math.PI/2; lid.position.y = 1.0; lid.castShadow = true; g.add(lid);
-
-      const band1 = new THREE.Mesh(new THREE.BoxGeometry(2.05, 0.10, 1.22), strap);
-      band1.position.y = 0.78; band1.castShadow = true; g.add(band1);
-
-      const band2 = new THREE.Mesh(new THREE.BoxGeometry(2.05, 0.10, 1.22), strap);
-      band2.position.y = 1.12; band2.castShadow = true; g.add(band2);
-
-      const lock = new THREE.Mesh(new THREE.BoxGeometry(0.28, 0.30, 0.10), goldMat);
-      lock.position.set(0, 0.55, 0.62); lock.castShadow = true; g.add(lock);
-
-      g.rotation.y = Math.PI;
-      return g;
     }
 
     function createDice(x,y,z){
@@ -715,10 +697,10 @@
       dice.receiveShadow = true;
 
       const edges = new THREE.EdgesGeometry(geo);
-      // Bordes de los dados en naranja fuerte
-      const line = new THREE.LineSegments(edges, new THREE.LineBasicMaterial({ color: 0xd84315 }));
+      // Bordes de los dados en dorado
+      const line = new THREE.LineSegments(edges, new THREE.LineBasicMaterial({ color: 0xffd700 }));
       line.material.transparent = true;
-      line.material.opacity = 0.55;
+      line.material.opacity = 0.85;
       dice.add(line);
 
       scene.add(dice);
@@ -730,28 +712,31 @@
       c.width = 128; c.height = 128;
       const ctx = c.getContext('2d');
 
+      // Fondo de las caras del dado: Naranja Oscuro a Bordó
       const grad = ctx.createRadialGradient(44, 44, 10, 64, 64, 90);
-      grad.addColorStop(0, '#ffffff');
-      grad.addColorStop(1, '#ffecb3'); // Tono crema
+      grad.addColorStop(0, '#d35400'); // Naranja Oscuro
+      grad.addColorStop(1, '#5c0000'); // Bordó
       ctx.fillStyle = grad;
       ctx.fillRect(0,0,128,128);
 
-      ctx.strokeStyle = 'rgba(230,81,0,.18)';
+      // Marco dorado en cada cara
+      ctx.strokeStyle = '#ffd700';
       ctx.lineWidth = 6;
       ctx.strokeRect(6,6,116,116);
 
-      // Puntos en Naranja
-      ctx.fillStyle = '#e65100';
+      // Puntos en Dorado
+      ctx.fillStyle = '#ffd700';
       const dots = getDotPositions(number);
       dots.forEach(p=>{
         ctx.beginPath();
         ctx.arc(p.x,p.y,12,0,Math.PI*2);
         ctx.fill();
-        ctx.fillStyle = 'rgba(255,255,255,.35)';
+        // Brillo interior
+        ctx.fillStyle = '#ffffff';
         ctx.beginPath();
-        ctx.arc(p.x-4,p.y-4,4.5,0,Math.PI*2);
+        ctx.arc(p.x-3,p.y-3,3.5,0,Math.PI*2);
         ctx.fill();
-        ctx.fillStyle = '#e65100';
+        ctx.fillStyle = '#ffd700';
       });
 
       const tex = new THREE.CanvasTexture(c);
@@ -788,12 +773,11 @@
     }
 
     // =========================
-    // Tirada REALISTA: NO vuelve al centro
+    // Tirada Extendida
     // =========================
     function rollDice(){
       if(isRolling) return;
 
-      // desbloquea audio + inicia background en el primer gesto del usuario
       unlockAudioAndStartBG();
 
       const lastPlay = localStorage.getItem(LS_LAST_PLAY);
@@ -806,21 +790,21 @@
       document.getElementById('rollButton').disabled = true;
       document.getElementById('scoreDisplay').style.display = 'block';
 
-      // sonido de movimiento de dados
       sfx(AUDIO.roll, 0.60);
 
       simulateRollNoReturn();
     }
 
     function simulateRollNoReturn(){
-      const duration = 2300;
+      const duration = 4500; // MÁS SEGUNDOS DE GIRO (4.5 seg)
       const start = performance.now();
 
       dice1.position.y = Math.max(dice1.position.y, 0.9);
       dice2.position.y = Math.max(dice2.position.y, 1.0);
 
-      const vel1 = { x: (Math.random()*0.06 - 0.03), z: (0.09 + Math.random()*0.05), rx: 0.18 + Math.random()*0.10, ry: 0.12 + Math.random()*0.10, rz: 0.10 + Math.random()*0.08 };
-      const vel2 = { x: (Math.random()*0.06 - 0.03), z: (0.09 + Math.random()*0.05), rx: 0.18 + Math.random()*0.10, ry: 0.12 + Math.random()*0.10, rz: 0.10 + Math.random()*0.08 };
+      // Mayor rotación inicial para que se vea dinámico por más tiempo
+      const vel1 = { x: (Math.random()*0.08 - 0.04), z: (0.10 + Math.random()*0.05), rx: 0.30 + Math.random()*0.15, ry: 0.20 + Math.random()*0.15, rz: 0.15 + Math.random()*0.10 };
+      const vel2 = { x: (Math.random()*0.08 - 0.04), z: (0.10 + Math.random()*0.05), rx: 0.30 + Math.random()*0.15, ry: 0.20 + Math.random()*0.15, rz: 0.15 + Math.random()*0.10 };
 
       if(dice1.position.z > 1.0) vel1.z *= -1;
       if(dice2.position.z > 1.0) vel2.z *= -1;
@@ -838,7 +822,8 @@
         const t = Math.min((now - start)/duration, 1);
 
         const friction = 1 - Math.pow(t, 1.6);
-        const bounce = Math.sin(t * Math.PI * 3) * (1 - t) * 0.9;
+        // Más rebotes (Pi * 6) para llenar los 4.5 segundos
+        const bounce = Math.sin(t * Math.PI * 6) * (1 - t) * 0.9; 
 
         dice1.position.x += vel1.x * friction;
         dice1.position.z += vel1.z * friction;
@@ -863,7 +848,7 @@
 
         enforceDiceSeparation();
 
-        if(t < 0.92){
+        if(t < 0.95){
           document.getElementById('scoreValue').textContent = (2 + Math.floor(Math.random()*11));
           requestAnimationFrame(tick);
         } else {
@@ -899,11 +884,22 @@
       const prize = calculatePrize(total);
       document.getElementById('modalPrize').innerHTML = prize.html;
 
+      // Generar fecha y hora
+      const now = new Date();
+      const timeString = `${String(now.getDate()).padStart(2, '0')}/${String(now.getMonth() + 1).padStart(2, '0')}/${now.getFullYear()} a las ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')} hs`;
+
+      const dateEl = document.getElementById('prize-date');
+      if(dateEl) {
+          dateEl.textContent = `Reclamado el ${timeString}`;
+          dateEl.style.display = 'block';
+      }
+
       try{
         localStorage.setItem(LS_LAST_PRIZE, JSON.stringify({
           d1, d2, total,
           prizeHtml: prize.html,
-          at: Date.now()
+          at: Date.now(),
+          timeString: timeString // Guardamos la hora para cuando recarguen la página
         }));
       }catch(e){}
 
@@ -923,16 +919,16 @@
     }
 
     function calculatePrize(total){
-      if (total >= 11) return { html: '🏴‍☠️ <span style="color:#ffd700;">¡BONO A ELECCIÓN!</span><br><span style="font-size:.95rem; opacity:.9;">Elegí tu bono EXTRA</span>' };
+      if (total >= 11) return { html: '🏴‍☠️ <span style="color:#ffd700;">¡BONO A ELECCIÓN!</span><br><span style="font-size:.95rem; opacity:.9;">Elegí tu bono VIP</span>' };
       if (total >= 9)  return { html: '💎 <span style="color:#ffd700;">¡BONO DEL 200%!</span><br><span style="font-size:.95rem; opacity:.9;">Nivel diamante</span>' };
       if (total >= 7)  return { html: '🔥 <span style="color:#ffd700;">¡BONO DEL 150%!</span><br><span style="font-size:.95rem; opacity:.9;">Ganancia épica</span>' };
       if (total >= 4)  return { html: '🎰 <span style="color:#ffd700;">¡BONO DEL 100%!</span><br><span style="font-size:.95rem; opacity:.9;">Multiplicá tu suerte</span>' };
       return { html: '🎁 <span style="color:#ffd700;">¡BONO SORPRESA!</span><br><span style="font-size:.95rem; opacity:.9;">Un regalo para vos</span>' };
     }
 
-    // NUEVA FUNCION: Redirección al webchat de Atenea
+    // NUEVA FUNCION: Redirección a casinoatenea.club
     function claimPrize(){
-      window.location.href = "https://www.casinoatenea.com/?open=true";
+      window.location.href = "https://casinoatenea.club/?open=true";
     }
 
     // =========================
@@ -1011,6 +1007,14 @@
       document.getElementById('modalTotal').textContent = saved.total ?? 2;
       document.getElementById('modalPrize').innerHTML = saved.prizeHtml || calculatePrize(saved.total ?? 2).html;
 
+      if (saved.timeString) {
+          const dateEl = document.getElementById('prize-date');
+          if(dateEl) {
+              dateEl.textContent = `Reclamado el ${saved.timeString}`;
+              dateEl.style.display = 'block';
+          }
+      }
+
       document.getElementById('resultModal').classList.add('visible');
     }
 
@@ -1024,7 +1028,7 @@
         // prepara bg audio
         ensureBackgroundAudio();
 
-        // desbloqueo de audio al primer gesto en la página (por políticas de autoplay)
+        // desbloqueo de audio al primer gesto en la página
         const unlockOnce = () => {
           unlockAudioAndStartBG();
           window.removeEventListener('pointerdown', unlockOnce);
